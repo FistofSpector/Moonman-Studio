@@ -6,13 +6,7 @@ using UnityEngine;
 
 public class CategoryBuilder
 {
-    /// <summary>
-    /// Use this method to create your own category.
-    /// </summary>
-    /// <param name="name">New category name</param>
-    /// <param name="description">Description of the new category</param>
-    /// <param name="icon">New category icon</param>
-    public static void Create(string name,string description, Sprite icon)
+    public static void Create(string name, string description, Sprite icon)
     {
         CatalogBehaviour manager = UnityEngine.Object.FindObjectOfType<CatalogBehaviour>();
         if (manager.Catalog.Categories.FirstOrDefault((Category c) => c.name == name) == null)
@@ -31,7 +25,4 @@ public class CategoryBuilder
             manager.Catalog.Categories = NewCategories;
         }
     }
-
-    //Made in USSR
-    //AZULE
 }
