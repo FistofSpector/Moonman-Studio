@@ -6,39 +6,76 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
 namespace Mod
 {
     public class Mod
     {
-        public static void Main() 
+        public static void Main()
         {
-            
-    CategoryBuilder.Create("Blade Runner", "Blade Runner", ModAPI.LoadSprite("thumb.png"));
+            CategoryBuilder.Create("Blade Runner", "", ModAPI.LoadSprite("Thumb.png"));
 
-   ModAPI.Register(
-   new Modification()
-   {
-       //Rick Beckard
-       OriginalItem = ModAPI.FindSpawnable("Human"), //item to derive from
-       NameOverride = "Rick Deckard", //new item name with a suffix to assure it is globally unique
-       DescriptionOverride = "", //new item description
-       CategoryOverride = ModAPI.FindCategory("Blade Runner"), //new item category
-       ThumbnailOverride = ModAPI.LoadSprite("People/Deckard/thumb.png"), //new item thumbnail (relative path)
-       AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
-       {
-       
-           //load textures for each layer (see Human textures folder in this repository)
-           var skin = ModAPI.LoadTexture("People/Deckard/Skin.png");
-           var flesh = ModAPI.LoadTexture("People/Base/Flesh.png");
-           var bone = ModAPI.LoadTexture("People/Base/Bone.png");
+            // Rick Deckard
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Rick Deckard",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Deckard/Deckard.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
 
-           //get person
-           var person = Instance.GetComponent<PersonBehaviour>();
-       person.SetBodyTextures(skin, flesh, bone, 1);
-       }
-   }  
-        );
+                        LimbBehaviour[] limbs = person.Limbs;
+                        LimbBehaviour firstLimb = limbs[1];
 
+                        GameObject cape = new GameObject("Coat");
+                        cape.transform.SetParent(firstLimb.transform, false);
+                        cape.transform.localPosition = new Vector2(0f, 0f);
+                        cape.transform.localScale = new Vector2(1f, 1f);
+                        cape.transform.localRotation = Quaternion.identity;
+
+                        SpriteRenderer capeSpriteRenderer = cape.AddComponent<SpriteRenderer>();
+                        capeSpriteRenderer.sprite = ModAPI.LoadSprite("Assets/People/Rick Deckard/Rick Deckard/Coat.png");
+                        capeSpriteRenderer.sortingLayerName = "Foreground";
+                    }
+                }
+            );
+
+            // Officer K
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Officer K",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Officer K/Officer K.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                        LimbBehaviour[] limbs = person.Limbs;
+                        LimbBehaviour firstLimb = limbs[1];
+
+                        GameObject cape = new GameObject("Coat");
+                        cape.transform.SetParent(firstLimb.transform, false);
+                        cape.transform.localPosition = new Vector2(0f, 0f);
+                        cape.transform.localScale = new Vector2(1f, 1f);
+                        cape.transform.localRotation = Quaternion.identity;
+
+                        SpriteRenderer capeSpriteRenderer = cape.AddComponent<SpriteRenderer>();
+                        capeSpriteRenderer.sprite = ModAPI.LoadSprite("Assets/People/Officer K/Officer K/Coat.png");
+                        capeSpriteRenderer.sortingLayerName = "Foreground";
+                    }
+                }
+            );
         }
-}
+    }
 }
