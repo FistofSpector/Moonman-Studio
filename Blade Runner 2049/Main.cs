@@ -26,7 +26,7 @@ namespace Mod
                     ThumbnailOverride = ModAPI.LoadSprite("Thumb.png"),
                     AfterSpawn = (Instance) =>
                     {
-                        var skin = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard.png");
+                        var skin = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard 2049.png");
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(skin, null, null, 1);
 
@@ -140,6 +140,84 @@ namespace Mod
                         SpriteRenderer accessorySpriteRenderer = accessory.AddComponent<SpriteRenderer>();
                         accessorySpriteRenderer.sprite = ModAPI.LoadSprite("Assets/People/Joi/Joi Hair.png");
                         accessorySpriteRenderer.sortingLayerName = "Top";
+                    }
+                }
+            );
+
+            // Roy Batty
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Roy Batty",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Roy Batty/Roy Batty.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                        LimbBehaviour[] limbs = person.Limbs;
+                        LimbBehaviour firstLimb = limbs[3];
+
+                        GameObject cape = new GameObject("Coat");
+                        cape.transform.SetParent(firstLimb.transform, false);
+                        cape.transform.localPosition = new Vector2(-0.0421f, -0.37f);
+                        cape.transform.localScale = new Vector2(1f, 1f);
+                        cape.transform.localRotation = Quaternion.identity;
+
+                        SpriteRenderer capeSpriteRenderer = cape.AddComponent<SpriteRenderer>();
+                        capeSpriteRenderer.sprite = ModAPI.LoadSprite("Assets/People/Roy Batty/Coat.png");
+                        capeSpriteRenderer.sortingLayerName = "Top";
+
+                        foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+                        {
+                            if (Limbs.gameObject.name.Contains("ArmFront"))
+                            {
+                                Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
+                    }
+                }
+            );
+            // Luv
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Luv",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Luv/Luv.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                        person.Limbs[0].SkinMaterialHandler.renderer.sprite = ModAPI.LoadSprite("Assets/People/Luv/Head.png");
+                        person.Limbs[0].SkinMaterialHandler.renderer.material.SetTexture("_FleshTex", ModAPI.LoadTexture("Assets/Other/flesh1.png"));
+                        person.Limbs[0].SkinMaterialHandler.renderer.material.SetTexture("_BoneTex", ModAPI.LoadTexture("Assets/Other/bone1.png"));
+                    }
+                }
+            );
+            // Pris
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Pris",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Pris/Pris.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
                     }
                 }
             );
