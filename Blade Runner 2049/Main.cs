@@ -26,7 +26,7 @@ namespace Mod
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Rick Deckard/Thumb.png"),
                     AfterSpawn = (Instance) =>
                     {
-                        var skin = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard 2049.png");
+                        var skin = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard.png");
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(skin, null, null, 1);
 
