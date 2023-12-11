@@ -144,6 +144,45 @@ namespace Mod
                 }
             );
 
+            // Wallace Agent 1
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Wallace Agent 1",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Wallace Agents/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Wallace Agents/Agent 1.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                        LimbBehaviour[] limbs = person.Limbs;
+                        LimbBehaviour firstLimb = limbs[3];
+
+                        GameObject cape = new GameObject("Coat");
+                        cape.transform.SetParent(firstLimb.transform, false);
+                        cape.transform.localPosition = new Vector2(-0.0421f, -0.37f);
+                        cape.transform.localScale = new Vector2(1f, 1f);
+                        cape.transform.localRotation = Quaternion.identity;
+
+                        SpriteRenderer capeSpriteRenderer = cape.AddComponent<SpriteRenderer>();
+                        capeSpriteRenderer.sprite = ModAPI.LoadSprite("Assets/People/Wallace Agents/Coat.png");
+                        capeSpriteRenderer.sortingLayerName = "Top";
+
+                        foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+                        {
+                            if (Limbs.gameObject.name.Contains("ArmFront"))
+                            {
+                                Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
+                    }
+                }
+            );
+
             // Roy Batty
             ModAPI.Register(
                 new Modification()
