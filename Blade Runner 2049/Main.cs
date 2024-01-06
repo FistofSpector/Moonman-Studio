@@ -14,7 +14,7 @@ namespace Mod
     {
         public static void Main()
         {
-            CategoryBuilder.Create("Blade Runner", "", ModAPI.LoadSprite("Thumb.png"));
+            CategoryBuilder.Create("Blade Runner", "", ModAPI.LoadSprite("Thumbnails/Category.png"));
 
             var joi = ModAPI.LoadTexture("Assets/People/Joi/Joi.png");
             var joiHair = ModAPI.LoadSprite("Assets/People/Joi/Joi Hair.png");
@@ -23,7 +23,7 @@ namespace Mod
             var officerKCoat = ModAPI.LoadSprite("Assets/People/Officer K/Coat.png");
             var officerKNoJacket = ModAPI.LoadTexture("Assets/People/Officer K/Officer K No Jacket.png");
             var agent1 = ModAPI.LoadTexture("Assets/People/Wallace Agents/Agent 1.png");
-            var freysa = ModAPI.LoadTexture("Assets/People/Freysa/Freysa.png")
+            var LAPDDrone = ModAPI.LoadSprite("Assets/Items/LAPD Drone/LAPD Drone.png");
 
             // Rick Deckard
             ModAPI.Register(
@@ -37,7 +37,17 @@ namespace Mod
                     AfterSpawn = (Instance) =>
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
-                        person.SetBodyTextures(joi);
+                        person.SetBodyTextures(rickDeckard);
+
+                        var skinManager = Instance.AddComponent<SkinManager>();
+
+                        skinManager.AddSkin(rickDeckard);
+                        skinManager.AddAccessory(rickDeckard, person.Limbs[3], officerKCoat, new Vector2 (-0.0421f, -0.37f));
+
+                        skinManager.AddSkin(agent1);
+
+                        skinManager.AddSkin(joi);
+                        skinManager.AddAccessory(joi, person.Limbs[0], joiHair, new Vector2 (-0.0421f, -0.37f));
                     }
                 }
             );
@@ -55,10 +65,6 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(officerKJacket);
-
-                        new skinManager.AddSkin(officerKJacket);
-                        new skinManager.AddAccessory(officerKJacket, person.Limbs[3], officerKCoat, new Vector2 (-0.0421f, -0.37f));
-                        new skinManager.AddSkin(officerKNoJacket);
                     }
                 }
             );
@@ -86,176 +92,6 @@ namespace Mod
                     }
                 }
             );
-
-            // LAPD
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "LAPD Officers",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(LAPDOfficer);
-            //         }
-            //     }
-            // );
-
-            // // Resistance
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Resistance Replicants",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Pris
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Pris",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Bryant
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Bryant",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Freysa
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Freysa",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Gaff
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Gaff",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Mariette
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Mariette",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Rachael
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Rachael",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Roy Batty
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Roy Batty",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
-
-            // // Wallace Agents
-            // ModAPI.Register(
-            //     new Modification()
-            //     {
-            //         OriginalItem = ModAPI.FindSpawnable("Human"),
-            //         NameOverride = "Wallace Agents",
-            //         DescriptionOverride = "",
-            //         CategoryOverride = ModAPI.FindCategory("Blade Runner"),
-            //         ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
-            //         AfterSpawn = (Instance) =>
-            //         {
-            //             var person = Instance.GetComponent<PersonBehaviour>();
-            //             person.SetBodyTextures(joi);
-            //         }
-            //     }
-            // );
 
             // Spinner
             // ModAPI.Register(
@@ -293,7 +129,7 @@ namespace Mod
                     ThumbnailOverride = ModAPI.LoadSprite("Thumbnails/Category.png"),
                     AfterSpawn = (Instance) =>
                     {
-                        Instance.GetComponent<SpriteRenderer>().sprite = LAPD Drone;
+                        Instance.GetComponent<SpriteRenderer>().sprite = LAPDDrone;
                         Instance.FixColliders();
                         Instance.AddComponent<DroneBehaviour>();
                     }
@@ -341,7 +177,7 @@ namespace Mod
             }
         }
 
-        private Vector2 GetMouseWorldPositionWithOffset()
+        public Vector2 GetMouseWorldPositionWithOffset()
         {
             Vector2 mousePosition = Input.mousePosition;
             mousePosition.x += offset;
@@ -349,7 +185,7 @@ namespace Mod
             return Camera.main.ScreenToWorldPoint(mousePosition);
         }
 
-        private void SmoothlyMoveTo(Vector2 targetPosition)
+        public void SmoothlyMoveTo(Vector2 targetPosition)
         {
             transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed * smoothness * Time.deltaTime);
         }
