@@ -22,6 +22,8 @@ namespace Mod
             var rickDeckardOG = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard.png");
             var rickDeckardCoat = ModAPI.LoadSprite("Assets/People/Rick Deckard/Coat.png");
             var HanSolo = ModAPI.LoadTexture("Assets/People/Rick Deckard/Han Solo.png");
+            var IndianaJones = ModAPI.LoadTexture("Assets/People/Rick Deckard/Indiana Jones.png");
+            var IndianaCoat = ModAPI.LoadSprite("Assets/People/Rick Deckard/Indiana Coat.png");
             var officerKenCoat = ModAPI.LoadSprite("Assets/People/Officer K/Ken Coat.png");
             var officerKen = ModAPI.LoadTexture("Assets/People/Officer K/Ken Jacket.png");
             var officerKJacket = ModAPI.LoadTexture("Assets/People/Officer K/Officer K Jacket.png");
@@ -50,7 +52,8 @@ namespace Mod
                         skinManager.AddSkin(rickDeckardOG);
                         skinManager.AddAccessory(rickDeckardOG, person.Limbs[3], rickDeckardCoat, new Vector2(-0.0421f, -0.37f));
                         skinManager.AddSkin(HanSolo);
-
+                        skinManager.AddSkin(IndianaJones);
+                        skinManager.AddAccessory(IndianaJones, person.Limbs[3], IndianaCoat, new Vector2(-0.0421f, -0.37f));
                     }
                 }
             );
