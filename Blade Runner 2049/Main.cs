@@ -29,6 +29,10 @@ namespace Mod
             var officerKJacket = ModAPI.LoadTexture("Assets/People/Officer K/Officer K Jacket.png");
             var officerKCoat = ModAPI.LoadSprite("Assets/People/Officer K/Coat.png");
             var officerKNoJacket = ModAPI.LoadTexture("Assets/People/Officer K/Officer K No Jacket.png");
+            var Variant1 = ModAPI.LoadTexture("Assets/People/Variant 1/Variant 1.png");
+            var Variant1Coat = ModAPI.LoadSprite("Assets/People/Variant 1/Coat.png");
+            var Variant2 = ModAPI.LoadTexture("Assets/People/Variant 2/Variant 2.png");
+            var Variant3 = ModAPI.LoadTexture("Assets/People/Variant 3/Variant 3.png");
             var agent1 = ModAPI.LoadTexture("Assets/People/Wallace Agents/Agent 1.png");
             var LAPDDrone = ModAPI.LoadSprite("Assets/Items/LAPD Drone/LAPD Drone.png");
 
@@ -54,10 +58,16 @@ namespace Mod
                         skinManager.AddSkin(HanSolo);
                         skinManager.AddSkin(IndianaJones);
                         skinManager.AddAccessory(IndianaJones, person.Limbs[3], IndianaCoat, new Vector2(-0.0421f, -0.37f));
-                    }
+
+                        foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+                        {
+                            if (Limbs.gameObject.name.Contains("ArmFront"))
+                            {
+                                Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
                 }
             );
-
             // Officer K
             ModAPI.Register(
                 new Modification()
@@ -71,7 +81,7 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(officerKJacket);
-                       
+
 
                         var skinManager = Instance.AddComponent<SkinManager>();
                         skinManager.AddSkin(officerKNoJacket);
@@ -79,7 +89,118 @@ namespace Mod
                         skinManager.AddAccessory(officerKen, person.Limbs[3], officerKenCoat, new Vector2(-0.0421f, -0.37f));
                         skinManager.AddSkin(officerKJacket);
                         skinManager.AddAccessory(officerKJacket, person.Limbs[3], officerKCoat, new Vector2(-0.0421f, -0.37f));
+
+                        foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+                        {
+                            if (Limbs.gameObject.name.Contains("ArmFront"))
+                            {
+                                Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
                     }
+            );
+            // Wallace Agent 1
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Wallace Agent 1",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Wallace Agents/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Wallace Agents/Agent 1.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                        foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+                        {
+                            if (Limbs.gameObject.name.Contains("ArmFront"))
+                            {
+                                Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
+                    }
+                }
+            );
+            // Roy Batty
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Roy Batty",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Roy Batty/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Roy Batty/Roy Batty.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                    }
+                }
+            );
+            // Luv
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Luv",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Luv/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Luv/Luv.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                    }
+                }
+            );
+            // Pris
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Pris",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Pris/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Pris/Pris.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+                    }
+                }
+            );
+            // Variants
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Variants",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Blade Runner"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Variant 1/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Assets/People/Variant 1/Variant 1.png");
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(skin, null, null, 1);
+
+
+                        foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+                        {
+                            if (Limbs.gameObject.name.Contains("ArmFront"))
+                            {
+                                Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
                 }
             );
 
