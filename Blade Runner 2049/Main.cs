@@ -19,6 +19,11 @@ namespace Mod
             var joi = ModAPI.LoadTexture("Assets/People/Joi/Joi.png");
             var joiHair = ModAPI.LoadSprite("Assets/People/Joi/Joi Hair.png");
             var rickDeckard = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard 2049.png");
+            var rickDeckardOG = ModAPI.LoadTexture("Assets/People/Rick Deckard/Rick Deckard.png");
+            var rickDeckardCoat = ModAPI.LoadSprite("Assets/People/Rick Deckard/Coat.png");
+            var HanSolo = ModAPI.LoadTexture("Assets/People/Rick Deckard/Han Solo.png");
+            var officerKenCoat = ModAPI.LoadSprite("Assets/People/Officer K/Ken Coat.png");
+            var officerKen = ModAPI.LoadTexture("Assets/People/Officer K/Ken Jacket.png");
             var officerKJacket = ModAPI.LoadTexture("Assets/People/Officer K/Officer K Jacket.png");
             var officerKCoat = ModAPI.LoadSprite("Assets/People/Officer K/Coat.png");
             var officerKNoJacket = ModAPI.LoadTexture("Assets/People/Officer K/Officer K No Jacket.png");
@@ -42,12 +47,10 @@ namespace Mod
                         var skinManager = Instance.AddComponent<SkinManager>();
 
                         skinManager.AddSkin(rickDeckard);
-                        skinManager.AddAccessory(rickDeckard, person.Limbs[3], officerKCoat, new Vector2 (-0.0421f, -0.37f));
+                        skinManager.AddSkin(rickDeckardOG);
+                        skinManager.AddAccessory(rickDeckardOG, person.Limbs[3], rickDeckardCoat, new Vector2(-0.0421f, -0.37f));
+                        skinManager.AddSkin(HanSolo);
 
-                        skinManager.AddSkin(agent1);
-
-                        skinManager.AddSkin(joi);
-                        skinManager.AddAccessory(joi, person.Limbs[0], joiHair, new Vector2 (-0.0421f, -0.37f));
                     }
                 }
             );
@@ -65,6 +68,14 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(officerKJacket);
+                       
+
+                        var skinManager = Instance.AddComponent<SkinManager>();
+                        skinManager.AddSkin(officerKNoJacket);
+                        skinManager.AddSkin(officerKen);
+                        skinManager.AddAccessory(officerKen, person.Limbs[3], officerKenCoat, new Vector2(-0.0421f, -0.37f));
+                        skinManager.AddSkin(officerKJacket);
+                        skinManager.AddAccessory(officerKJacket, person.Limbs[3], officerKCoat, new Vector2(-0.0421f, -0.37f));
                     }
                 }
             );
