@@ -25,7 +25,7 @@ namespace Mod
             var Thug1 = ModAPI.LoadTexture("People/Thug/Thug 1.png");
             var Thug2 = ModAPI.LoadTexture("People/Thug/Thug 2.png");
             var Thug3 = ModAPI.LoadTexture("People/Thug/Thug 3.png");
-            var HitGirlMovie = ModAPI.LoadTexture("People/Hit-Girl/Skins/Movie.png");
+            var HitGirlMovie = ModAPI.LoadTexture("People/Hit-Girl/Skin2.png");
             var HitGirl = ModAPI.LoadTexture("People/Hit-Girl/Skin.png");
             var HitGirlPonyTail = ModAPI.LoadSprite("People/Hit-girl/Head.png");
             var BigDaddy = ModAPI.LoadTexture("People/Big Daddy/Skin.png");
@@ -280,7 +280,7 @@ namespace Mod
        NameOverride = CBTag + "Todd Haynes", //new item name with a suffix to assure it is globally unique
        DescriptionOverride = "", //new item description
        CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
-       ThumbnailOverride = ModAPI.LoadSprite("People/Todd Haynes/Thumb.png"), //new item thumbnail (relative path)
+       ThumbnailOverride = ModAPI.LoadSprite("People/Todd Haynes/Thumb2.png"), //new item thumbnail (relative path)
        AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
        {
            //load textures for each layer (see Human textures folder in this repository)
@@ -324,7 +324,7 @@ namespace Mod
 
            var KA = new GameObject("TC");
            KA.transform.SetParent(Instance.transform.Find("Head"));
-           KA.transform.localPosition = new Vector3(-0.0104f, 0.04f);
+           KA.transform.localPosition = new Vector3(0f, 0.04f);
            KA.transform.localScale = new Vector3(1f, 1f);
            var KASprite = KA.AddComponent<SpriteRenderer>();
            KASprite.sprite = ModAPI.LoadSprite("People/Mother F'er/Beard.png");
@@ -368,8 +368,9 @@ namespace Mod
            HG.transform.localPosition = new Vector3(0.0142f, 0f);
            HG.transform.localScale = new Vector3(1f, 1f);
            var HGSprite = HG.AddComponent<SpriteRenderer>();
-           HGSprite.sprite = ModAPI.LoadSprite("People/Todd Haynes/Beard.png");
+           HGSprite.sprite = ModAPI.LoadSprite("People/Todd Haynes/Cape.png");
            HG.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+
 
            foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
            {
