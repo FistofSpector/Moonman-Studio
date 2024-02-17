@@ -133,7 +133,7 @@ namespace Mod
                Limbs.transform.root.localScale *= 1.01f;
            }
            var HG = new GameObject("HG");
-           HG.transform.SetParent(Instance.transform.Find("Body").Find("UpperBody"));
+           HG.transform.SetParent(Instance.transform.Find("Body").Find("LowerBody"));
            HG.transform.localPosition = new Vector3(-0.0421f, -0.37f);
            HG.transform.localScale = new Vector3(1f, 1f);
            var HGSprite = HG.AddComponent<SpriteRenderer>();
@@ -591,7 +591,7 @@ new Modification()
             armProp[2].armorPiece = "LowerBody";
             armProp[2].armorTier = 1;
             armProp[2].scaleOffset = new Vector3(0f, 0f);
-            armProp[2].offset = new Vector3(0f, 0.037f);
+            armProp[2].offset = new Vector3(0f, 0f);
             armProp[2].sprite = "Armor/Hit Girl/Armor/LowerBody.png";
 
             armProp[3].armorPiece = "UpperArm";
@@ -715,7 +715,7 @@ new Modification()
             armProp[2].armorPiece = "LowerBody";
             armProp[2].armorTier = 1;
             armProp[2].scaleOffset = new Vector3(0f, 0f);
-            armProp[2].offset = new Vector3(0f, 0.037f);
+            armProp[2].offset = new Vector3(0f, 0f);
             armProp[2].sprite = "Armor/Hit Girl CB/Armor/LowerBody.png";
 
             armProp[3].armorPiece = "UpperArm";
