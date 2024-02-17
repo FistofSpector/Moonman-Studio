@@ -280,7 +280,7 @@ namespace Mod
        NameOverride = CBTag + "Todd Haynes", //new item name with a suffix to assure it is globally unique
        DescriptionOverride = "", //new item description
        CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
-       ThumbnailOverride = ModAPI.LoadSprite("People/Todd Haynes/Thumb2.png"), //new item thumbnail (relative path)
+       ThumbnailOverride = ModAPI.LoadSprite("People/Todd Haynes/Thumb.png"), //new item thumbnail (relative path)
        AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
        {
            //load textures for each layer (see Human textures folder in this repository)
@@ -314,7 +314,7 @@ namespace Mod
        NameOverride = CBTag + "Mother F'er", //new item name with a suffix to assure it is globally unique
        DescriptionOverride = "", //new item description
        CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
-       ThumbnailOverride = ModAPI.LoadSprite("People/Mother F'er/Thumb.png"), //new item thumbnail (relative path)
+       ThumbnailOverride = ModAPI.LoadSprite("People/Mother F'er/Thumb2.png"), //new item thumbnail (relative path)
        AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
        {
            //load textures for each layer (see Human textures folder in this repository)
@@ -324,7 +324,7 @@ namespace Mod
 
            var KA = new GameObject("TC");
            KA.transform.SetParent(Instance.transform.Find("Head"));
-           KA.transform.localPosition = new Vector3(0f, 0.04f);
+           KA.transform.localPosition = new Vector3(-0.0142f, 0.06f);
            KA.transform.localScale = new Vector3(1f, 1f);
            var KASprite = KA.AddComponent<SpriteRenderer>();
            KASprite.sprite = ModAPI.LoadSprite("People/Mother F'er/Beard.png");
