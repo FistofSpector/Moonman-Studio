@@ -33,17 +33,22 @@ namespace Mod
             var BigDaddyMovie = ModAPI.LoadTexture("People/Big Daddy/Skins/Movie.png");
             var BigDaddyMovieHead = ModAPI.LoadSprite("People/Big Daddy/Skins/MovieHead.png");
             var MotherF = ModAPI.LoadTexture("People/Mother F'er/Skin.png");
+            var FrankDamico = ModAPI.LoadTexture("People/Frank D'amico /Skin.png");
+            var NightBitch = ModAPI.LoadTexture("People/Night Bitch/Skin.png");
             var MotherFComic = ModAPI.LoadTexture("People/Mother F'er/Skins/Comic.png");
             var MotherFBeard = ModAPI.LoadSprite("People/Mother F'er/Beard.png");
             var MotherFCape = ModAPI.LoadSprite("People/Mother F'er/Cape.png");
             var MotherFMovie = ModAPI.LoadTexture("People/Mother F'er/Skins/Movie.png");
+            var BlackDeath = ModAPI.LoadTexture("People/Black Death/Skin.png");
+            var Tumor = ModAPI.LoadTexture("People/Tumor/Skin.png");
+
             ModAPI.Register(
    new Modification()
    {
        //Kick-Ass
        OriginalItem = ModAPI.FindSpawnable("Human"), //item to derive from
        NameOverride = CBTag + "Kick-Ass", //new item name with a suffix to assure it is globally unique
-       DescriptionOverride = "", //new item description
+       DescriptionOverride = "What's the difference between Spider-Man and Peter Parker? Spider-Man gets the girl. - Kick-Ass", //new item description
        CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
        ThumbnailOverride = ModAPI.LoadSprite("People/Kick Ass/thumb.png"), //new item thumbnail (relative path)
        AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
@@ -51,7 +56,15 @@ namespace Mod
            //load textures for each layer (see Human textures folder in this repository)
            var person = Instance.GetComponent<PersonBehaviour>();
            person.SetBodyTextures(KickAss);
-       }
+           foreach (LimbBehaviour Limb in person.Limbs)
+           {
+               Limb.BreakingThreshold *= 200f;
+               Limb.ImpactPainMultiplier = 0f;
+               Limb.Vitality *= 200f;
+               Limb.Health *= 200f;
+               Limb.InitialHealth *= 200f;
+           }
+        }
    }  
         );
                         ModAPI.Register(
@@ -147,6 +160,25 @@ namespace Mod
                    Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
                }
            }
+
+       }
+   }  
+        );
+                                                ModAPI.Register(
+   new Modification()
+   {
+       //Frank D'amico 
+       OriginalItem = ModAPI.FindSpawnable("Human"), //item to derive from
+       NameOverride = MVTag + "Frank D'amico ", //new item name with a suffix to assure it is globally unique
+       DescriptionOverride = "", //new item description
+       CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
+       ThumbnailOverride = ModAPI.LoadSprite("People/Frank D'amico/thumb.png"), //new item thumbnail (relative path)
+       AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
+       {
+
+           //load textures for each layer (see Human textures folder in this repository)
+           var person = Instance.GetComponent<PersonBehaviour>();
+           person.SetBodyTextures(FrankDamico);
 
        }
    }  
@@ -379,6 +411,73 @@ namespace Mod
                    Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
                }
            }
+       }
+   }  
+        );
+                        ModAPI.Register(
+   new Modification()
+   {
+       //Night Bitch
+       OriginalItem = ModAPI.FindSpawnable("Human"), //item to derive from
+       NameOverride = MVTag + "Night Bitch", //new item name with a suffix to assure it is globally unique
+       DescriptionOverride = "", //new item description
+       CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
+       ThumbnailOverride = ModAPI.LoadSprite("People/Night Bitch/thumb.png"), //new item thumbnail (relative path)
+       AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
+       {
+           //load textures for each layer (see Human textures folder in this repository)
+           var person = Instance.GetComponent<PersonBehaviour>();
+           person.SetBodyTextures(NightBitch);
+           var KA = new GameObject("TC");
+           KA.transform.SetParent(Instance.transform.Find("Head"));
+           KA.transform.localPosition = new Vector3(-0.0101f, 0.0401f);
+           KA.transform.localScale = new Vector3(1f, 1f);
+           var KASprite = KA.AddComponent<SpriteRenderer>();
+           KASprite.sprite = ModAPI.LoadSprite("People/Night Bitch/Head.png");
+           KA.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+
+           foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+           {
+               if (Limbs.gameObject.name.Contains("ArmFront"))
+               {
+                   Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+               }
+           }
+       }
+   }  
+        );
+                                                   ModAPI.Register(
+   new Modification()
+   {
+       //Black Death
+       OriginalItem = ModAPI.FindSpawnable("Human"), //item to derive from
+       NameOverride = MVTag + "Black Death", //new item name with a suffix to assure it is globally unique
+       DescriptionOverride = "", //new item description
+       CategoryOverride = ModAPI.FindCategory("Kick-Ass"), //new item category
+       ThumbnailOverride = ModAPI.LoadSprite("People/Black Death/Thumb.png"), //new item thumbnail (relative path)
+       AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
+       {
+
+           //get person
+           var person = Instance.GetComponent<PersonBehaviour>();
+           person.SetBodyTextures(BlackDeath);
+
+           var HG = new GameObject("HG");
+           HG.transform.SetParent(Instance.transform.Find("Body").Find("LowerBody"));
+           HG.transform.localPosition = new Vector3(-0.0421f, -0.37f);
+           HG.transform.localScale = new Vector3(1f, 1f);
+           var HGSprite = HG.AddComponent<SpriteRenderer>();
+           HGSprite.sprite = ModAPI.LoadSprite("People/Black Death/Coat.png");
+           HG.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+
+           foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+           {
+               if (Limbs.gameObject.name.Contains("ArmFront"))
+               {
+                   Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+               }
+           }
+
        }
    }  
         );
