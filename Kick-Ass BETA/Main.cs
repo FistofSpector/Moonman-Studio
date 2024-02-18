@@ -118,9 +118,9 @@ namespace Mod
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(BigDaddy);
 
-                        foreach (var Limbs in person.Limbs)
+                        foreach (LimbBehaviour limb in person.Limbs)
                         {
-                            Limbs.transform.root.localScale *= 1.01f;
+                            limb.transform.root.localScale *= 1.01f;
                         }
 
                         var coat = new GameObject("Coat");
@@ -157,9 +157,9 @@ namespace Mod
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(BigDaddyMovie);
 
-                        foreach (var Limbs in person.Limbs)
+                        foreach (LimbBehaviour limb in person.Limbs)
                         {
-                            Limbs.transform.root.localScale *= 1.01f;
+                            limb.transform.root.localScale *= 1.01f;
                         }
 
                         new CapeBehaviour().AddToggleButton(person, DefaultCape, false);
@@ -188,9 +188,9 @@ namespace Mod
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(HitGirl);
 
-                        foreach (var Limbs in person.Limbs)
+                        foreach (LimbBehaviour limb in person.Limbs)
                         {
-                            Limbs.transform.root.localScale *= 0.991f;
+                            limb.transform.root.localScale *= 1.01f;
                         }
 
                         var hair = new GameObject("Hair");
@@ -229,9 +229,9 @@ namespace Mod
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(HitGirlMovie);
 
-                        foreach (var Limbs in person.Limbs)
+                        foreach (LimbBehaviour limb in person.Limbs)
                         {
-                            Limbs.transform.root.localScale *= 0.991f;
+                            limb.transform.root.localScale *= 1.01f;
                         }
 
                         new CapeBehaviour().AddToggleButton(person, DefaultCape, true);
@@ -413,7 +413,7 @@ namespace Mod
                         coat.transform.localRotation = Quaternion.identity;
 
                         var coatRenderer = coat.AddComponent<SpriteRenderer>();
-                        coatRenderer.sprite = ModAPI.LoadSprite("Assets/People/Big Daddy/Coat.png");
+                        coatRenderer.sprite = ModAPI.LoadSprite("Assets/People/Black Death/Coat.png");
                         coatRenderer.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
 
                         foreach (LimbBehaviour limb in person.Limbs)
@@ -505,6 +505,11 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(LieutenantStripes);
+
+                        foreach (LimbBehaviour limb in person.Limbs)
+                        {
+                            limb.transform.root.localScale *= 1.007f;
+                        }
 
                         var mask = new GameObject("Mask");
                         mask.transform.SetParent(Instance.transform.Find("Head"));
