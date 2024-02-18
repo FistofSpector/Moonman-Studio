@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +43,7 @@ namespace Mod
             var InsectMan = ModAPI.LoadTexture("Assets/People/Insect Man/Skin.png");
             var DrGravity = ModAPI.LoadTexture("Assets/People/Dr. Gravity/Skin.png");
             var BattleGuy = ModAPI.LoadTexture("Assets/People/Battle Guy/Skin.png");
+            var ColonelStars = ModAPI.LoadTexture("Assets/People/Colonel Stars/Skin.png");
 
             ModAPI.Register(
                 new Modification()
@@ -563,7 +564,7 @@ namespace Mod
                     AfterSpawn = (Instance) =>
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
-                        person.SetBodyTextures(BattleGuy);
+                        person.SetBodyTextures(ColonelStars);
                     }
                 }
             );
