@@ -20,9 +20,10 @@ namespace Mod
             if (isToggled)
             {
                 CreateCape(person, capeSprite);
+                isCapeEnabled = true;
             }
 
-            person.Limbs[1].gameObject.GetComponent<PhysicalBehaviour>().ContextMenuOptions.Buttons.Add(new ContextMenuButton("Next Skin", "Next Skin", "Next Skin", new UnityAction[1]
+            person.Limbs[1].gameObject.GetComponent<PhysicalBehaviour>().ContextMenuOptions.Buttons.Add(new ContextMenuButton("Toggle Cape", "Toggle Cape", "Toggle Cape", new UnityAction[1]
             {
                 (UnityAction) (() =>
                 {
