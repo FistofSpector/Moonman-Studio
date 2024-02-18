@@ -29,11 +29,11 @@ namespace Mod
             var HitGirlMovie = ModAPI.LoadTexture("Assets/People/Hit-Girl/Skin2.png");
             var HitGirl = ModAPI.LoadTexture("Assets/People/Hit-Girl/Skin.png");
             var BigDaddy = ModAPI.LoadTexture("Assets/People/Big Daddy/Skin.png");
+            var MotherFuckerCape = ModAPI.LoadSprite("Assets/People/Mother Fucker/Cape.png");
             var BigDaddyMovie = ModAPI.LoadTexture("Assets/People/Big Daddy/Skins/Movie.png");
             var MotherFucker = ModAPI.LoadTexture("Assets/People/Mother Fucker/Skin.png");
             var MotherFuckerComic = ModAPI.LoadTexture("Assets/People/Mother Fucker/Skins/Comic.png");
-            var MotherFuckerCape = ModAPI.LoadSprite("Assets/People/Mother Fucker/Cape.png");
-            var MotherFuckerMovie = ModAPI.LoadTexture("Assets/People/Mother Fucker/Skins/Movie.png");
+            var RedMist = ModAPI.LoadTexture("Assets/People/Mother Fucker/Skins/Movie.png");
             var Frank = ModAPI.LoadTexture("Assets/People/Frank D'Amico/Skin.png");
             var NightBitch = ModAPI.LoadTexture("Assets/People/Night Bitch/Skin.png");
             var TheTumor = ModAPI.LoadTexture("Assets/People/The Tumor/Skin.png");
@@ -278,7 +278,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = CBTag + "Mother Fucker",
-                    DescriptionOverride = "\"Your dad? You blew up my dad with a bazooka.\"",
+                    DescriptionOverride = "\"You made this real. You started it, and I'm going to end it! I'll be immortal, like an evil Jesus!\"",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Mother Fucker/Thumb2.png"),
                     AfterSpawn = (Instance) =>
@@ -314,7 +314,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Mother Fucker",
-                    DescriptionOverride = "\"Your dad? You blew up my dad with a bazooka.\"",
+                    DescriptionOverride = "\"You made this real. You started it, and I'm going to end it! I'll be immortal, like an evil Jesus!\"",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Mother Fucker/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -323,6 +323,32 @@ namespace Mod
                         person.SetBodyTextures(MotherFucker);
 
                         new CapeBehaviour().AddToggleButton(person, DefaultCape, true);
+
+                        foreach (LimbBehaviour limb in person.Limbs)
+                        {
+                            if (limb.name.Contains("ArmFront"))
+                            {
+                                limb.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+                            }
+                        }
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = MVTag + "Red Mist",
+                    DescriptionOverride = "\"As a great man once said.. \"Wait'll they get a load of me.\"\"",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Mother Fucker/Thumb3.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(RedMist);
+
+                        new CapeBehaviour().AddToggleButton(person, MotherFuckerCape, true);
 
                         foreach (LimbBehaviour limb in person.Limbs)
                         {
@@ -471,7 +497,7 @@ namespace Mod
                 new Modification()
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
-                    NameOverride = MVTag + "Lieutenant Stripes",
+                    NameOverride = CBTag + "Lieutenant Stripes",
                     DescriptionOverride = "\"Try to have fun. Otherwise, what's the point?\"",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Lieutenant Stripes/Thumb.png"),
