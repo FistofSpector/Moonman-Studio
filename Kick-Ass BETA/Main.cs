@@ -636,7 +636,7 @@ namespace Mod
             ModAPI.Register(
                 new Modification()
                 {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"),
+                    OriginalItem = ModAPI.FindSpawnable("Brick"),
                     NameOverride = WPTag + "Battle Guy's Shield",
                     DescriptionOverride = "",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
