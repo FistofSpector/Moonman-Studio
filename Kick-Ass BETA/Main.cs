@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +40,9 @@ namespace Mod
             var BlackDeath = ModAPI.LoadTexture("Assets/People/Black Death/Skin.png");
             var LieutenantStripes = ModAPI.LoadTexture("Assets/People/Lieutenant Stripes/Skin.png");
             var GenghisCarnage = ModAPI.LoadTexture("Assets/People/Genghis Carnage/Skin.png");
+            var InsectMan = ModAPI.LoadTexture("Assets/People/Insect Man/Skin.png");
+            var DrGravity = ModAPI.LoadTexture("Assets/People/Dr. Gravity/Skin.png");
+            var BattleGuy = ModAPI.LoadTexture("Assets/People/Battle Guy/Skin.png");
 
             ModAPI.Register(
                 new Modification()
@@ -53,17 +56,18 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(KickAss);
-                        foreach (LimbBehaviour Limb in person.Limbs)
+
+                        foreach (LimbBehaviour limb in person.Limbs)
                         {
-                            Limb.BreakingThreshold *= 100f;
-                            Limb.ImpactPainMultiplier = 0f;
-                            Limb.Vitality *= 200f;
-                            Limb.Health *= 200f;
-                            Limb.InitialHealth *= 200f;
-                            Limb.IsLethalToBreak = false;
+                            limb.BreakingThreshold *= 100f;
+                            limb.ImpactPainMultiplier = 0f;
+                            limb.Vitality *= 200f;
+                            limb.Health *= 200f;
+                            limb.InitialHealth *= 200f;
+                            limb.IsLethalToBreak = false;
                         }
-        }
-        }  
+                    }
+                }  
             );
 
             ModAPI.Register(
@@ -127,11 +131,6 @@ namespace Mod
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(BigDaddy);
 
-                        foreach (LimbBehaviour limb in person.Limbs)
-                        {
-                            limb.transform.root.localScale *= 1.01f;
-                        }
-
                         var coat = new GameObject("Coat");
                         coat.transform.SetParent(Instance.transform.Find("Body").Find("LowerBody"));
                         coat.transform.localPosition = new Vector3(-0.0421f, -0.37f);
@@ -166,11 +165,6 @@ namespace Mod
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(BigDaddyMovie);
 
-                        foreach (LimbBehaviour limb in person.Limbs)
-                        {
-                            limb.transform.root.localScale *= 1.01f;
-                        }
-
                         new CapeBehaviour().AddToggleButton(person, DefaultCape, false);
 
                         foreach (LimbBehaviour limb in person.Limbs)
@@ -196,11 +190,6 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(HitGirl);
-
-                        foreach (LimbBehaviour limb in person.Limbs)
-                        {
-                            limb.transform.root.localScale *= 1.01f;
-                        }
 
                         var hair = new GameObject("Hair");
                         hair.transform.SetParent(Instance.transform.Find("Head"));
@@ -237,11 +226,6 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(HitGirlMovie);
-
-                        foreach (LimbBehaviour limb in person.Limbs)
-                        {
-                            limb.transform.root.localScale *= 1.01f;
-                        }
 
                         new CapeBehaviour().AddToggleButton(person, DefaultCape, true);
 
@@ -497,7 +481,7 @@ namespace Mod
                     AfterSpawn = (Instance) =>
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
-                        person.SetBodyTextures(GenghisCarnage);
+                        person.SetBodyTextures(InsectMan);
                     }
                 }
             );
@@ -514,11 +498,6 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(LieutenantStripes);
-
-                        foreach (LimbBehaviour limb in person.Limbs)
-                        {
-                            limb.transform.root.localScale *= 1.007f;
-                        }
 
                         var mask = new GameObject("Mask");
                         mask.transform.SetParent(Instance.transform.Find("Head"));
@@ -537,6 +516,54 @@ namespace Mod
                                 limb.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
                             }
                         }
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = MVTag + "Dr. Gravity",
+                    DescriptionOverride = "\"Beware Dr. Gravity!\"",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Dr. Gravity/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(DrGravity);
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = CBTag + "Battle Guy",
+                    DescriptionOverride = "\"Well, I became Battle-Guy after my parents were mugged and killed coming home from the opera.\"",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Battle Guy/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(BattleGuy);
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = MVTag + "Colonel Stars",
+                    DescriptionOverride = "\"Try to have fun. Otherwise, what's the point?\"",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Colonel Stars/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(BattleGuy);
                     }
                 }
             );
@@ -576,10 +603,57 @@ namespace Mod
             ModAPI.Register(
                 new Modification()
                 {
+                    OriginalItem = ModAPI.FindSpawnable("Baseball Bat"),
+                    NameOverride = WPTag + "Colonel Stars Bat",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/Weapons/Bat/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Assets/Weapons/Bat/Art.png");
+                        Instance.FixColliders();
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Rod"),
+                    NameOverride = WPTag + "Dr. Gravity's Zero-G Device",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/Weapons/Zero-G Device/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Assets/Weapons/Zero-G Device/Art.png");
+                        Instance.FixColliders();
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Rod"),
+                    NameOverride = WPTag + "Battle Guy's Shield",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/Weapons/Shield/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Assets/Weapons/Shield/Art.png");
+                        Instance.FixColliders();
+                    }
+                }
+            );
+
+            ModAPI.Register(
+                new Modification()
+                {
                     OriginalItem = ModAPI.FindSpawnable("Bulletproof Sheet"),
-                    NameOverride = AMTag + "Big Daddy's", 
-                    NameToOrderByOverride = "KA",
-                    DescriptionOverride = "", 
+                    NameOverride = AMTag + "Big Daddy's",
+                    DescriptionOverride = "",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/Armor/Big Daddy/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -701,7 +775,6 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Bulletproof Sheet"),
                     NameOverride = AMTag + "Hit-Girl's", 
-                    NameToOrderByOverride = "KA",
                     DescriptionOverride = "", 
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/Armor/Hit-Girl/Thumb.png"),
@@ -824,7 +897,6 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Bulletproof Sheet"),
                     NameOverride = AMTag + "Misc", 
-                    NameToOrderByOverride = "KA",
                     DescriptionOverride = "", 
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/Armor/Misc/Thumb.png"),
