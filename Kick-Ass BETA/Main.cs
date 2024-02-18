@@ -40,13 +40,14 @@ namespace Mod
             var BlackDeath = ModAPI.LoadTexture("Assets/People/Black Death/Skin.png");
             var LieutenantStripes = ModAPI.LoadTexture("Assets/People/Lieutenant Stripes/Skin.png");
             var GenghisCarnage = ModAPI.LoadTexture("Assets/People/Genghis Carnage/Skin.png");
+            var InsectMan = ModAPI.LoadTexture("Assets/People/Insect Man/Skin.png");
 
             ModAPI.Register(
                 new Modification()
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = CBTag + "Kick-Ass",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Come on, be honest with yourself. At some point in our lives, we all wanna be a superhero. - Kick-Ass",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Kick-Ass/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -62,7 +63,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Thug",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Whoa! It's only me, boss. Everything's under control. - Thug",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Thugs/thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -78,7 +79,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Thug 2",
-                    DescriptionOverride = "",
+                    DescriptionOverride = " I always wanted to say this. Say hello to my little friend! - Thug",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Thugs/thumb2.png"),
                     AfterSpawn = (Instance) =>
@@ -94,7 +95,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Thug 3",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Fuck this shit, I'm getting the bazooka! - Thug",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Thugs/thumb3.png"),
                     AfterSpawn = (Instance) =>
@@ -180,7 +181,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = CBTag + "Hit-Girl",
-                    DescriptionOverride = "",
+                    DescriptionOverride = " If I ever catch you robbing again, shit-burger, I'm going to go to Saudi Arabia on your ass and cut your hand off. - Hit Girl",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Hit-Girl/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -203,7 +204,7 @@ namespace Mod
                         hairRenderer.sprite = ModAPI.LoadSprite("Assets/People/Hit-Girl/Hair.png");
                         hairRenderer.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
 
-                        new CapeBehaviour().AddToggleButton(person, DefaultCape, true);
+                        new CapeBehaviour().AddToggleButton(person, DefaultCape, false);
 
                         foreach (LimbBehaviour limb in person.Limbs)
                         {
@@ -221,7 +222,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Hit-Girl",
-                    DescriptionOverride = "",
+                    DescriptionOverride = " If I ever catch you robbing again, shit-burger, I'm going to go to Saudi Arabia on your ass and cut your hand off. - Hit Girl",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Hit-Girl/thumb2.png"),
                     AfterSpawn = (Instance) =>
@@ -252,7 +253,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = CBTag + "Todd Haynes",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Maybe it's a porn tape, He doesn't have a porn tape. - Todd Haynes",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Todd Haynes/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -278,7 +279,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = CBTag + "Mother Fucker",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Your dad? You blew up my dad with a bazooka. - Mother Fucker",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Mother Fucker/Thumb2.png"),
                     AfterSpawn = (Instance) =>
@@ -312,7 +313,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Mother Fucker",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Your dad? You blew up my dad with a bazooka. - Mother Fucker",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Mother Fucker/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -338,7 +339,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Frank D'Amico",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "I gotta send a public service message to the people out there that being a superhero is bad for your health. - Frank",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Frank D'Amico/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -354,7 +355,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "The Tumor",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Go ahead and shoot me, you little bitch. There's nothing you can do to make me talk. - The Tumor",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/The Tumor/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -370,7 +371,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Black Death",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "...",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Black Death/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -420,7 +421,7 @@ namespace Mod
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Genghis Carnage",
-                    DescriptionOverride = "",
+                    DescriptionOverride = "Leave it to Mother Russia... - Genghis Carnage",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Genghis Carnage/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -430,13 +431,29 @@ namespace Mod
                     }
                 }
             );
+                        ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = MVTag + "Insect Man",
+                    DescriptionOverride = "I've been bullied my whole life for being gay; so, now I stand up for the defenseless. - Insect Man",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Insect Man/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var person = Instance.GetComponent<PersonBehaviour>();
+                        person.SetBodyTextures(InsectMan);
+                    }
+                }
+            );
+
 
             ModAPI.Register(
                 new Modification()
                 {
                     OriginalItem = ModAPI.FindSpawnable("Human"),
                     NameOverride = MVTag + "Lieutenant Stripes",
-                    DescriptionOverride = "",
+                    DescriptionOverride = " Try to have fun. Otherwise, what's the point? - Lieutenant Stripes",
                     CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
                     ThumbnailOverride = ModAPI.LoadSprite("Assets/People/Lieutenant Stripes/Thumb.png"),
                     AfterSpawn = (Instance) =>
@@ -496,7 +513,21 @@ namespace Mod
                     }
                 }
             );
-
+                        ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Baseball Bat"),
+                    NameOverride = WPTag + "Night Bitches Pole",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("Kick-Ass"),
+                    ThumbnailOverride = ModAPI.LoadSprite("Assets/Weapons/Pole/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Assets/Weapons/Pole/Art.png", 1);
+                        Instance.FixColliders();
+                    }
+                }
+            );
             ModAPI.Register(
                 new Modification()
                 {
