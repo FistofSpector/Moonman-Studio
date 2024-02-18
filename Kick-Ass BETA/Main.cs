@@ -53,8 +53,7 @@ namespace Mod
                     {
                         var person = Instance.GetComponent<PersonBehaviour>();
                         person.SetBodyTextures(KickAss);
-
-                        foreach (LimbBehaviour limb in person.Limbs)
+                        foreach (LimbBehaviour Limb in person.Limbs)
                         {
                             Limb.BreakingThreshold *= 100f;
                             Limb.ImpactPainMultiplier = 0f;
@@ -63,8 +62,8 @@ namespace Mod
                             Limb.InitialHealth *= 200f;
                             Limb.IsLethalToBreak = false;
                         }
-                    }
-                }  
+        }
+        }  
             );
 
             ModAPI.Register(
