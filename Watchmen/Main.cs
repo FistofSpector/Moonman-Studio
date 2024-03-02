@@ -301,11 +301,11 @@ namespace Watchmen
                 // Check if the current expression is resting, angry, or happy
                 if (j == 0 || j == 4 || j == 8)
                 {
-                    yield return new WaitForSeconds(0);
+                    yield return new WaitForSeconds(0f);
                 }
                 else
                 {
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.15f);
                 }
             }
         }
@@ -327,8 +327,6 @@ namespace Watchmen
         private IEnumerator AnimateMask()
         {
             int currentIndex = 0;
-            float expressionDelay = UnityEngine.Random.Range(1f, 5f);
-            float transitionDelay = UnityEngine.Random.Range(0.1f, 0.25f);
             int transitionCount = expressions.Count - 3;
 
             while (isAnimating)
@@ -340,7 +338,7 @@ namespace Watchmen
                     // Check if the current expression is resting, angry, or happy
                     if (i == 0 || i == 4 || i == 8)
                     {
-                        yield return new WaitForSeconds(expressionDelay);
+                        yield return new WaitForSeconds(2.5f);
                     }
                     else
                     {
