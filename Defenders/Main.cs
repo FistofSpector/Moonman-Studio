@@ -42,7 +42,13 @@ namespace Mod
             var BlackRed = ModAPI.LoadTexture("People/Daredevil/Skins/Black Red.png");
             var KingDaredevil = ModAPI.LoadTexture("People/Daredevil/Skins/King Daredevil.png");
             var DaredevilBeard = ModAPI.LoadSprite("People/Daredevil/Skins/King Daredevil Beard.png");
+            var ImNotDD = ModAPI.LoadTexture("People/Daredevil/Skins/Im Not Daredevil.png");
+            var Armored = ModAPI.LoadTexture("People/Daredevil/Skins/Armored Suit.png");
+            var PreistMattMurdock = ModAPI.LoadTexture("People/Daredevil/Skins/Preist Murdock.png");
             var Daredevil = ModAPI.LoadTexture("People/Daredevil/Skin.png");
+            var GangWar = ModAPI.LoadTexture("People/Luke Cage/Skins/GangWar.png");
+            var HouseM = ModAPI.LoadTexture("People/Luke Cage/Skins/HouseM.png");
+            var Shirtless = ModAPI.LoadTexture("People/Luke Cage/Skins/Shirtless.png");
             var LukeCage = ModAPI.LoadTexture("People/Luke Cage/Skin.png");
             var Bullseye = ModAPI.LoadTexture("People/Bullseye/Skin.png");
             var Kingpin = ModAPI.LoadTexture("People/Kingpin/Skin.png");
@@ -54,9 +60,19 @@ namespace Mod
             var IronfistWhite = ModAPI.LoadTexture("People/Iron Fist/Skins/White.png");
             var TheHand = ModAPI.LoadTexture("People/Hand Agent/Skin.png");
             var TheHandHead = ModAPI.LoadSprite("People/Hand Agent/Head.png");
-            var Elektra = ModAPI.LoadTexture("People/Elektra/Skin.png");
             var ElekrtaDaredevil = ModAPI.LoadTexture("People/Elektra/Skins/Daredevil.png");
             var ElekrtaDaredevilHair = ModAPI.LoadSprite("People/Elektra/Skins/Hair.png");
+            var ElekrtaNetflix = ModAPI.LoadTexture("People/Elektra/Skins/Netflix.png");
+            var ElekrtaNetflixHair = ModAPI.LoadSprite("People/Elektra/Skins/NetflixHair.png");
+            var Elektra = ModAPI.LoadTexture("People/Elektra/Skin.png");
+            var Logan = ModAPI.LoadTexture("People/Logan/Skin.png");
+            var LoganBeard = ModAPI.LoadSprite("People/Logan/Beard.png");
+            var LoganSuit = ModAPI.LoadTexture("People/Logan/Suit.png");
+            var LoganSuit2 = ModAPI.LoadTexture("People/Logan/Suit2.png");
+            var LoganSuitCoat = ModAPI.LoadSprite("People/Logan/Coat.png");
+            var LoganClaws = ModAPI.LoadSprite("People/Logan/Claws.png");
+            var X23 = ModAPI.LoadTexture("People/X-23/Skin.png");
+            var X23Claw = ModAPI.LoadSprite("People/X-23/Claws.png");
             ModAPI.Register(
    new Modification()
    {
@@ -78,12 +94,15 @@ namespace Mod
            skinManager.AddSkin(DaredevilUnmasked);
            skinManager.AddSkin(MattMurdock);
            skinManager.AddSkin(ManWithoutFear);
-           skinManager.AddAccessory(ManWithoutFear, person.Limbs[0], ManWithoutFearhead, new Vector2(0f, .01f));
+           skinManager.AddAccessory(ManWithoutFear, person.Limbs[0], ManWithoutFearhead, new Vector2(-0.0101f, 0.0401f));
            skinManager.AddSkin(DDNetflixSuit);
            skinManager.AddSkin(YellowSuit);
            skinManager.AddSkin(BlackRed);
            skinManager.AddSkin(KingDaredevil);
            skinManager.AddAccessory(KingDaredevil, person.Limbs[0], DaredevilBeard, new Vector2(-.0121f, .0451f));
+           skinManager.AddSkin(Armored);
+           skinManager.AddSkin(ImNotDD);
+           skinManager.AddSkin(PreistMattMurdock);
            skinManager.AddSkin(Daredevil);
 
            foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
@@ -110,7 +129,11 @@ namespace Mod
 
            var person = Instance.GetComponent<PersonBehaviour>();
            person.SetBodyTextures(LukeCage);
-
+           var skinManager = Instance.AddComponent<SkinManager>();
+           skinManager.AddSkin(HouseM);
+           skinManager.AddSkin(Shirtless);
+           skinManager.AddSkin(GangWar);
+           skinManager.AddSkin(LukeCage);
        }
    }  
         );
@@ -185,7 +208,7 @@ namespace Mod
            skinManager.CreateAccessoryOnLimb(person.Limbs[0], IronfistHead, new Vector2(0f, 0f));
 
            skinManager.AddSkin(IronfistWhite);
-           skinManager.AddAccessory(IronfistWhite, person.Limbs[0], IronfistHead, new Vector2(0f, .01f));
+           skinManager.AddAccessory(IronfistWhite, person.Limbs[0], IronfistHead, new Vector2(-.01f, .01f));
 
            foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
            {
@@ -260,6 +283,55 @@ namespace Mod
        }
    }  
         );
+                                                                           ModAPI.Register(
+   new Modification()
+   {
+       //Elektra
+       OriginalItem = ModAPI.FindSpawnable("Human"), //item to derive from
+       NameOverride = DFTag + "Elektra", //new item name with a suffix to assure it is globally unique
+       DescriptionOverride = "", //new item description
+       CategoryOverride = ModAPI.FindCategory("616"), //new item category
+       ThumbnailOverride = ModAPI.LoadSprite("People/Elektra/thumb.png"), //new item thumbnail (relative path)
+       AfterSpawn = (Instance) => //all code in the AfterSpawn delegate will be executed when the item is spawned
+       {
+
+
+           var person = Instance.GetComponent<PersonBehaviour>();
+           person.SetBodyTextures(Elektra);
+
+           var skinManager = Instance.AddComponent<SkinManager>();
+
+           skinManager.AddSkin(ElekrtaDaredevil);
+           skinManager.AddAccessory(ElekrtaDaredevil, person.Limbs[0], ElekrtaDaredevilHair, new Vector2(-0.01f, 0.04f));
+           skinManager.AddSkin(ElekrtaNetflix);
+           skinManager.AddAccessory(ElekrtaNetflix, person.Limbs[0], ElekrtaNetflixHair, new Vector2(-0.01f, 0.04f));
+           skinManager.AddSkin(Elektra);
+           foreach (var Limbs in Instance.GetComponent<PersonBehaviour>().Limbs)
+           {
+               if (Limbs.gameObject.name.Contains("ArmFront"))
+               {
+                   Limbs.GetComponent<SpriteRenderer>().sortingLayerName = "Top";
+               }
+           }
+
+       }
+   }  
+        );
+            ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Bulletproof Sheet"),
+                    NameOverride = "Daredevils Helmet",
+                    DescriptionOverride = "",
+                    CategoryOverride = ModAPI.FindCategory("616"),
+                    ThumbnailOverride = ModAPI.LoadSprite("People/Daredevil/Thumb.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("People/Daredevil/Helmet.png");
+                        Instance.FixColliders();
+                    }
+                }
+            );
         }
 }
 }
