@@ -1,0 +1,19 @@
+{
+  "Name": "Watchmen",
+  "Author": "belknight",
+  "Description": "",
+  "ModVersion": "1.0",
+  "GameVersion": "1.27+",
+  "ThumbnailPath": "Assets/Mod Thumb.png",
+  "EntryPoint": "Watchmen.Mod",
+  "Tags": [],
+  "Scripts": [
+    "CategoryBuilder.cs",
+    "Main.cs",
+    "SkinManager.cs",
+    "CapeBehaviour.cs"
+  ],
+  "Active": true,
+  "UGCIdentity": null,
+  "CreatorUGCIdentity": "2935941540"
+}
