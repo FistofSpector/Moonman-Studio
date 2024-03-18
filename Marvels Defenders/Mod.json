@@ -1,0 +1,20 @@
+{
+  "Name": "Marvel's Defenders",
+  "Author": "TheFistofSpector",
+  "Description": "",
+  "ModVersion": "1.0",
+  "GameVersion": "1.27+",
+  "ThumbnailPath": "Assets/Mod Thumb.png",
+  "EntryPoint": "Defenders.Mod",
+  "Tags": [],
+  "Scripts": [
+    "CategoryBuilder.cs",
+    "FrameworkFunctions.cs",
+    "Main.cs",
+    "SkinManager.cs",
+    "CapeBehaviour.cs"
+  ],
+  "Active": true,
+  "UGCIdentity": null,
+  "CreatorUGCIdentity": "2935941540"
+}
